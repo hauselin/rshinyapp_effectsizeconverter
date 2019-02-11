@@ -1,1 +1,1 @@
-This small R Shiny application converts between common effect size measures. It uses the R function es() to convert between different effect sizes (this function is available in the hausekeep package). 
+This small R Shiny application converts between common effect size measures. It uses the R function es() to convert between different effect sizes (this function is available in the hausekeep package). https://hause.shinyapps.io/shinyapp_effectsize/
