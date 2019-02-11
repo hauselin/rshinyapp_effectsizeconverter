@@ -5,8 +5,8 @@ account: hause
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 706464
-bundleId: 1869205
+bundleId: 1869674
 url: https://hause.shinyapps.io/shinyapp_effectsize/
-when: 1549898020.81014
+when: 1549912302.57172
 asMultiple: FALSE
 asStatic: FALSE

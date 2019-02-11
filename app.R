@@ -122,21 +122,21 @@ server <- function(input, output) {
 
   output$outputeffectsizes <- renderTable({
      if (input$effect_size_type == "Cohen's d") {
-       es(d = input$effectsize)
+       es(d = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "correlation r") {
-       es(r = input$effectsize)
+       es(r = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "r-squared") {
-       es(R2 = input$effectsize)
+       es(R2 = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "Cohen's f") {
-       es(f = input$effectsize)
+       es(f = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "odds ratio") {
-       es(oddsratio = input$effectsize)
+       es(oddsratio = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "log odds ratio") {
-       es(logoddsratio = input$effectsize)
+       es(logoddsratio = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "area-under-curve (auc)") {
-       es(auc = input$effectsize)
+       es(auc = input$effectsize, decimal = 4)
      }
-   })
+   }, digits = 3)
 
   output$formulae <- renderUI({
     withMathJax(
