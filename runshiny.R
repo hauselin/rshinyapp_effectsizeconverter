@@ -1,2 +1,2 @@
-runApp("app", display.mode = 'showcase')
+runApp("app", display.mode = 'auto')
 

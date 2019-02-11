@@ -2,6 +2,6 @@ Title: Effect size convertor
 Author: Hause Lin
 AuthorUrl: https://github.com/hauselin
 License: MIT + file LICENSE
-DisplayMode: Showcase
+DisplayMode: Normal
 Tags: effect-sizes, statistical-measures, statistics
 Type: Shiny
