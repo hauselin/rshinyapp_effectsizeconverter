@@ -158,7 +158,7 @@ server <- function(input, output) {
       "",
       "Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.), Hillsdale, NJ: Erlbaum.",
       "",
-      "Lin, H. (2019). hauselin/hausekeep: third release (Version v0.0.0.9002-alpha). Zenodo. http://doi.org/10.5281/zenodo.2557034",
+      "Lin, H. (2019). hauselin/hausekeep: third release (Version v0.0.0.9002-alpha). Zenodo. https://doi.org/10.5281/zenodo.2555874",
       "",
       "Rosenthal, R. (1994). Parametric measures of effect size. In H. Cooper & L. V. Hedges (Eds.), The Handbook of Research Synthesis. New York, NY: Sage.",
       "",
