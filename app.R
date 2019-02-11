@@ -103,6 +103,9 @@ ui <- fluidPage(
         h5("The es() function in the",
            a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
            "also performs these conversions."),
+        h6("Code for creating this Shiny app is available on ",
+           a("GitHub", href="https://github.com/hauselin/rshinyapp_effectsizeconverter"),
+           "."),
         tableOutput(outputId = "outputeffectsizes"),
 
         h4("Conversion formulae and notes"),
@@ -137,7 +140,7 @@ server <- function(input, output) {
 
   output$formulae <- renderUI({
     withMathJax(
-      helpText("All conversions assume equal sample size in groups. By convention, Cohen's d of 0.2, 0.5, 0.8 are considered small, medium and large effect sizes respectively (correlation r = 0.1, 0.3, 0.5)."),
+      helpText("All conversions assume equal sample size groups. By convention, Cohen's d of 0.2, 0.5, 0.8 are considered small, medium and large effect sizes respectively (correlation r = 0.1, 0.3, 0.5)."),
       helpText("Cohen's d to correlation r"),
       helpText("$$r = \\frac{d}{\\sqrt{d^2 + 4}}$$"),
       helpText("Cohen's d to correlation f"),
@@ -153,9 +156,9 @@ server <- function(input, output) {
     HTML(paste(
       "Borenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R. (2009). Introduction to meta-analysis. Chichester, West Sussex, UK: Wiley.",
       "",
-      "Cohen J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.), Hillsdale, NJ: Erlbaum.",
+      "Cohen, J. (1988). Statistical power analysis for the behavioral sciences (2nd ed.), Hillsdale, NJ: Erlbaum.",
       "",
-      "Hause Lin. (2019). hauselin/hausekeep: third release (Version v0.0.0.9002-alpha). Zenodo. http://doi.org/10.5281/zenodo.2557034",
+      "Lin, H. (2019). hauselin/hausekeep: third release (Version v0.0.0.9002-alpha). Zenodo. http://doi.org/10.5281/zenodo.2557034",
       "",
       "Rosenthal, R. (1994). Parametric measures of effect size. In H. Cooper & L. V. Hedges (Eds.), The Handbook of Research Synthesis. New York, NY: Sage.",
       "",
