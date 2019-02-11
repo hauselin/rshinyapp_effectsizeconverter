@@ -1,0 +1,12 @@
+name: shinyapp_effectsize
+title: shinyapp_effectsize
+username:
+account: hause
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 706464
+bundleId: 1868989
+url: https://hause.shinyapps.io/shinyapp_effectsize/
+when: 1549891548.20725
+asMultiple: FALSE
+asStatic: FALSE
