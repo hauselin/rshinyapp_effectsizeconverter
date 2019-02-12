@@ -143,12 +143,12 @@ server <- function(input, output) {
       helpText("All conversions assume equal sample size groups. By convention, Cohen's d of 0.2, 0.5, 0.8 are considered small, medium and large effect sizes respectively (correlation r = 0.1, 0.3, 0.5)."),
       helpText("Cohen's d to correlation r"),
       helpText("$$r = \\frac{d}{\\sqrt{d^2 + 4}}$$"),
-      helpText("Cohen's d to correlation f"),
+      helpText("Cohen's d to Cohen's f"),
       helpText("$$f = \\frac{d}{2}$$"),
       helpText("Cohen's d to log odds ratio"),
-      helpText("$$odds ratio  =  \\frac{d}{\\frac{\\sqrt{3}}{\\pi}}$$"),
+      helpText("$$\\lg{odds ratio} = \\frac{d}{\\frac{\\sqrt{3}}{\\pi}}$$"),
       helpText("Cohen's d to area-under-curve (auc)"),
-      helpText("$$auc = \\phi\\frac{d}{\\sqrt{2}}, (R syntax: pnorm(d/sqrt(2), 0, 1))$$")
+      helpText("$$auc = \\phi\\frac{d}{\\sqrt{2}}, [R syntax: pnorm(d/sqrt(2), 0, 1)]$$")
     )
     })
 
