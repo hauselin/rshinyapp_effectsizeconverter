@@ -1,11 +1,11 @@
 library(shiny)
 
-es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logoddsratio = NULL, auc = NULL, decimal = 2, msg = TRUE) {
+es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logoddsratio = NULL, auc = NULL, fishersz = NULL, decimal = 2, msg = TRUE) {
 
-  effectsizes <- data.frame(matrix(NA, nrow = length(c(d, r, R2, f, oddsratio, logoddsratio, auc)), ncol = 7)) # dataframe version
-  names(effectsizes) <- c("d", "r", "R2", "f", "oddsratio", "logoddsratio", "auc")
+  effectsizes <- data.frame(matrix(NA, nrow = length(c(d, r, R2, f, oddsratio, logoddsratio, auc, fishersz)), ncol = 8)) # dataframe version
+  names(effectsizes) <- c("d", "r", "R2", "f", "oddsratio", "logoddsratio", "auc", "fishersz")
 
-  if (length(c(d, r, R2, f, oddsratio, logoddsratio, auc)) < 1) {
+  if (length(c(d, r, R2, f, oddsratio, logoddsratio, auc, fishersz)) < 1) {
     stop("Please specify one effect size!")
   }
 
@@ -18,6 +18,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(r)) {
     if (msg) {message(paste0("r: ", r, " ")) }
     effectsizes$d <- (2 * r) / (sqrt(1 - r^2))
@@ -27,6 +28,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(f)) {
     if (msg) {message(paste0("f: ", f, " ")) }
     effectsizes$d <- f * 2
@@ -36,6 +38,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(R2)) {
     if (msg) {message(paste0("R2: ", R2, " ")) }
     effectsizes$r <- sqrt(R2)
@@ -45,6 +48,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(oddsratio)) {
     if (msg) {message(paste0("odds ratio: ", oddsratio, " "))}
     effectsizes$d <- log(oddsratio) * (sqrt(3) / pi)
@@ -54,6 +58,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- oddsratio
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(logoddsratio)) {
     if (msg) {message(paste0("log odds ratio: ", logoddsratio, " ")) }
     effectsizes$logoddsratio <- logoddsratio
@@ -63,6 +68,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$R2 <- effectsizes$r^ 2
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
   } else if (is.numeric(auc)) { # also known as common language (CL) effect size statistic
     if (msg) {message(paste0("auc: ", auc, " ")) }
     effectsizes$auc <- auc
@@ -72,6 +78,17 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$R2 <- effectsizes$r^ 2
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
+    effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
+  } else if (is.numeric(fishersz)) { # also known as common language (CL) effect size statistic
+    if (msg) {message(paste0("fishersz: ", auc, " ")) }
+    effectsizes$fishersz <- fishersz
+    effectsizes$r <- (exp(effectsizes$fishersz / 0.5) - 1) / (exp(effectsizes$fishersz / 0.5) + 1)
+    effectsizes$d <- (2 * effectsizes$r) / (sqrt(1 - effectsizes$r^2))
+    effectsizes$f <- effectsizes$d / 2
+    effectsizes$R2 <- R2
+    effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
+    effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
+    effectsizes$auc <- stats::pnorm(effectsizes$d/sqrt(2), 0, 1)
   }
 
   round(effectsizes, decimal)
@@ -94,7 +111,8 @@ ui <- fluidPage(
         #             selected = "Cohen's d"),
         radioButtons(inputId = "effect_size_type", label = "Input effect size measure",
                     choices = c("Cohen's d", "correlation r", "r-squared", "Cohen's f",
-                                "odds ratio", "log odds ratio", "area-under-curve (auc)"),
+                                "odds ratio", "log odds ratio", "area-under-curve (auc)",
+                                "Fisher's z (z')"),
                     selected = "Cohen's d", inline = FALSE)
       ),
 
@@ -135,6 +153,8 @@ server <- function(input, output) {
        es(logoddsratio = input$effectsize, decimal = 4)
      } else if (input$effect_size_type == "area-under-curve (auc)") {
        es(auc = input$effectsize, decimal = 4)
+     } else if (input$effect_size_type == "Fisher's z (z')") {
+       es(fishersz = input$effectsize, decimal = 4)
      }
    }, digits = 3)
 
@@ -148,7 +168,9 @@ server <- function(input, output) {
       helpText("Cohen's d to log odds ratio"),
       helpText("$$\\lg{odds ratio} = \\frac{d}{\\frac{\\sqrt{3}}{\\pi}}$$"),
       helpText("Cohen's d to area-under-curve (auc)"),
-      helpText("$$auc = \\phi\\frac{d}{\\sqrt{2}}, [R syntax: pnorm(d/sqrt(2), 0, 1)]$$")
+      helpText("$$auc = \\phi\\frac{d}{\\sqrt{2}}, [R syntax: pnorm(d/sqrt(2), 0, 1)]$$"),
+      helpText("correlation r to Fisher's z (z')"),
+      helpText("$$z' = 0.5 * (\\lg{(1 + r)} - \\lg{(1 - r)})$$")
     )
     })
 
