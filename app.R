@@ -100,6 +100,13 @@ ui <- fluidPage(
    # Application title
    titlePanel("Effect size converter"),
 
+   h5("The es() function in the",
+      a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
+      "also performs these conversions."),
+   h6("Code for creating this Shiny app is available on ",
+      a("GitHub", href="https://github.com/hauselin/rshinyapp_effectsizeconverter"),
+      "."),
+
    # Sidebar with a slider input for number of bins
    sidebarLayout(
 
@@ -117,20 +124,14 @@ ui <- fluidPage(
       ),
 
       mainPanel(
-        h3("Converted effect size"),
-        h5("The es() function in the",
-           a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
-           "also performs these conversions."),
-        h6("Code for creating this Shiny app is available on ",
-           a("GitHub", href="https://github.com/hauselin/rshinyapp_effectsizeconverter"),
-           "."),
-        tableOutput(outputId = "outputeffectsizes"),
-
-        h4("Conversion formulae and notes"),
-        uiOutput(outputId = "formulae"),
-
-        h4("References"),
-        htmlOutput("references")
+        tabsetPanel(type = "tabs",
+                    tabPanel("Converted effect sizes", tableOutput(outputId = "outputeffectsizes"),
+                             tags$p("All conversions assume equal sample size groups."),
+                             uiOutput(outputId = "formulae")),
+                    tabPanel("References", tags$p(""), htmlOutput("references")),
+                    tabPanel("About", tags$p(""), tags$p("Developed and maintained by Hause Lin"),
+                             tags$p("hauselin@gmail.com"))
+        )
       )
    )
 )
@@ -160,7 +161,7 @@ server <- function(input, output) {
 
   output$formulae <- renderUI({
     withMathJax(
-      helpText("All conversions assume equal sample size groups. By convention, Cohen's d of 0.2, 0.5, 0.8 are considered small, medium and large effect sizes respectively (correlation r = 0.1, 0.3, 0.5)."),
+      helpText("By convention, Cohen's d of 0.2, 0.5, 0.8 are considered small, medium and large effect sizes respectively (correlation r = 0.1, 0.3, 0.5)."),
       helpText("Cohen's d to correlation r"),
       helpText("$$r = \\frac{d}{\\sqrt{d^2 + 4}}$$"),
       helpText("Cohen's d to Cohen's f"),
