@@ -130,7 +130,8 @@ ui <- fluidPage(
                              uiOutput(outputId = "formulae")),
                     tabPanel("References", tags$p(""), htmlOutput("references")),
                     tabPanel("About", tags$p(""), tags$p("Developed and maintained by Hause Lin"),
-                             tags$p("hauselin@gmail.com"))
+                             tags$p("hauselin@gmail.com"),
+                             tags$p("Lin, H. (2019). hauselin/rshinyapp_effectsizeconverter: shiny effect size converter v0.0.1 (Version v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.2563830"))
         )
       )
    )
