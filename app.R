@@ -96,7 +96,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  tags$head(includeScript("google-analytics.js")),
+    tags$head(includeScript("google-analytics.js")),
 
    # Application title
    titlePanel("Effect size converter"),
