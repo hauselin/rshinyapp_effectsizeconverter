@@ -104,8 +104,10 @@ ui <- fluidPage(
    h5("The es() function in the",
       a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
       "also performs these conversions."),
-   h6("Code for creating this Shiny app is available on ",
+   h6("Source code is available at ",
       a("GitHub", href="https://github.com/hauselin/rshinyapp_effectsizeconverter"),
+      " and R tutorials are available ",
+      a("here", href="https://hausetutorials.netlify.com/"),
       "."),
 
    # Sidebar with a slider input for number of bins
