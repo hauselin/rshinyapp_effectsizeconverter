@@ -79,7 +79,7 @@ es <- function(d = NULL, r = NULL, R2 = NULL, f = NULL, oddsratio = NULL, logodd
     effectsizes$oddsratio <- exp(effectsizes$d / (sqrt(3) / pi))
     effectsizes$logoddsratio <- effectsizes$d / (sqrt(3) / pi)
     effectsizes$fishersz <- .5 * log((1+effectsizes$r)/ (1-effectsizes$r))
-  } else if (is.numeric(fishersz)) { # also known as common language (CL) effect size statistic
+  } else if (is.numeric(fishersz)) {
     if (msg) {message(paste0("fishersz: ", auc, " ")) }
     effectsizes$fishersz <- fishersz
     effectsizes$r <- (exp(effectsizes$fishersz / 0.5) - 1) / (exp(effectsizes$fishersz / 0.5) + 1)
@@ -100,6 +100,9 @@ ui <- fluidPage(
 
    # Application title
    titlePanel("Effect size converter"),
+   # titlePanel(h1(a("Effect size converter", href="http://escal.site"))),
+
+   h3(a("NEW: Bookmark and use the faster app here at http://escal.site", href="http://escal.site")),
 
    h5("The es() function in the",
       a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
