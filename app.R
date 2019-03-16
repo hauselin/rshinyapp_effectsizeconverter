@@ -99,8 +99,7 @@ ui <- fluidPage(
     tags$head(includeScript("google-analytics.js")),
 
    # Application title
-   titlePanel("Effect size converter"),
-   # titlePanel(h1(a("Effect size converter", href="http://escal.site"))),
+   titlePanel("Effect size convertor (to be deprecated soon!)"),
 
    h3(a("NEW: Bookmark and use the faster app here at http://escal.site", href="http://escal.site")),
 
