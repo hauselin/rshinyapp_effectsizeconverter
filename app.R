@@ -101,7 +101,7 @@ ui <- fluidPage(
    # Application title
    titlePanel("Effect size convertor (to be deprecated soon!)"),
 
-   h3(a("NEW: Bookmark and use the faster app here at http://escal.site", href="http://escal.site")),
+   h4("NEW: Save and share the faster app at", a("http://escal.site", href="http://escal.site")),
 
    h5("The es() function in the",
       a("hausekeep R package", href="https://hauselin.github.io/hausekeep/"),
