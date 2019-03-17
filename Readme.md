@@ -4,5 +4,5 @@ This small [R Shiny application](http://escal.site) converts between common effe
 
 [![DOI](https://zenodo.org/badge/170142426.svg)](https://zenodo.org/badge/latestdoi/170142426)
 
-Lin, H. (2019). hauselin/rshinyapp_effectsizeconverter: shiny effect size converter v0.0.1 (Version v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.2563830
+Lin, H. (2019). hauselin/rshinyapp_effectsizeconverter: shiny effect size converter (Version v0.0.2). Zenodo. https://doi.org/10.5281/zenodo.2563830.
 
