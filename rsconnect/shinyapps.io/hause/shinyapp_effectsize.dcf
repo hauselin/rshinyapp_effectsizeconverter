@@ -1,12 +1,13 @@
 name: shinyapp_effectsize
-title: shinyapp_effectsize
+title:
 username:
 account: hause
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 706464
-bundleId: 1945276
+bundleId: 1948584
 url: https://hause.shinyapps.io/shinyapp_effectsize/
-when: 1552812731.55558
+when: 1552937678.17229
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: google-analytics.js|Readme.html|Readme.md
