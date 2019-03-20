@@ -3,5 +3,5 @@ Author: Hause Lin
 AuthorUrl: https://github.com/hauselin
 License: MIT + file LICENSE
 DisplayMode: normal
-Tags: effect-sizes, statistical-measures, statistics
+Tags: effect-sizes, statistical-measures, statistics, r, shinyapp, shiny
 Type: Shiny
