@@ -1,3 +1,6 @@
+#' This shiny app script redirects visitors to the new site.
+#' If you're looking for the code the runs the actualy app, look inside the archive directory
+
 library(shiny)
 
 server <- function(input, output, session) {}
